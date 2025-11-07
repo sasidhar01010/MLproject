@@ -1,6 +1,7 @@
 import sys
 # Import the configured 'logger' object directly from the 'logger' module
-from logger import logger 
+from src.logger import logging
+
 
 # --- Helper Function for Detailed Error Message ---
 
