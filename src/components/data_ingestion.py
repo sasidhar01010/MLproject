@@ -10,6 +10,7 @@ from src.exception import CustomException
 from src.logger import logger
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -62,4 +63,8 @@ if __name__ == "__main__":
     train_data,test_data=obj.initiate_data_ingestion()
     
     DataTransformation=DataTransformation()
-    DataTransformation.initiate_data_transformation(train_data,test_data)
+    train_array,test_array,_=DataTransformation.initiate_data_transformation(train_data,test_data)
+
+    modeltrainer=ModelTrainer()
+    r2_square=modeltrainer.initiate_model_trainer(train_array,test_array)
+    print("R2 square value :",r2_square)
