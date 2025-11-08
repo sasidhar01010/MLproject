@@ -70,3 +70,13 @@ def evaluate_models(
 
     except Exception as e:
         raise CustomException(e, sys) from e
+    
+def load_object(file_path: str) -> Any:
+    """
+    Load a Python object from a file using dill.
+    """
+    try:
+        with open(file_path, "rb") as f:
+            return dill.load(f)
+    except Exception as e:
+        raise CustomException(e, sys) from e
